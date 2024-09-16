@@ -2,12 +2,13 @@ const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
 const app = express();
+require('dotenv').config()
 const PORT = 5000;
 
 app.use(cors());
 app.use(express.json());
 
-const API_KEY = '96617bca';
+const API_KEY = process.env.API_KEY;
 
 // Movie search route
 app.get('/api/movies', async (req, res) => {
