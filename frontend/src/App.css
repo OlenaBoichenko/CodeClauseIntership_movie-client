@@ -1,0 +1,140 @@
+body {
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  background-image: url(./page.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  object-fit: cover;
+  box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 20px auto;
+}
+
+/* search bar */
+input[type="text"] {
+  width: 100%;
+  max-width: 500px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+button {
+  display: block;
+  margin: 0 auto;
+  padding: 10px 20px;
+  background-color: #396d66;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* List of movies */
+.movie-list {
+  /* display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  row-gap: 30px;
+}
+
+.movie-item img {
+  width: 300px;
+}
+
+.movie-item {
+  display: flex;
+  flex-direction: column;
+  
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.movie-item:hover {
+  transform: scale(1.05);
+}
+
+.movie-item h3 {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.movie-item a {
+  text-decoration: none;
+  color: #007BFF;
+  font-weight: bold;
+}
+
+.movie-item a:hover {
+  color: #0056b3;
+}
+
+/* Details of movies */
+.movie-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.movie-details img {
+  width: 300px;
+}
+
+.movie-details h1 {
+  font-size: 24px;
+  color: #333;
+}
+
+.movie-details p {
+  margin: 10px 0;
+  font-size: 16px;
+  color: #666;
+}
+
+.movie-details a {
+  text-decoration: none;
+  color: #007BFF;
+  font-weight: bold;
+}
+
+.movie-details a:hover {
+  color: #0056b3;
+}
