@@ -8,7 +8,7 @@ body {
   background-size: cover;
   background-position: center;
   min-height: 100vh;
-  object-fit: cover;
+  
   box-sizing: border-box;
 }
 
@@ -63,6 +63,7 @@ button:hover {
   flex-wrap: wrap;
   justify-content: space-around;
   row-gap: 30px;
+  column-gap: 30px;
 }
 
 .movie-item img {

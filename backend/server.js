@@ -10,6 +10,13 @@ app.use(express.json());
 
 const API_KEY = process.env.API_KEY;
 
+// // Movies download route
+app.get('/api/movies/ocean', async (req, res) => {
+    const title = req.query.query;
+    const response = await axios.get(`http://www.omdbapi.com/?apikey=${API_KEY}&s=ocean`);
+    res.json(response.data);
+});
+
 // Movie search route
 app.get('/api/movies', async (req, res) => {
     const searchQuery = req.query.query;

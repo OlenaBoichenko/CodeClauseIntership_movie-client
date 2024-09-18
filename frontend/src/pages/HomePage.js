@@ -7,7 +7,23 @@ const HomePage = () => {
   const [movies, setMovies] = useState([]); // list of movies
   const [query, setQuery] = useState(""); // current request
 
-  // Function to perform a search
+  // Fetch initial movies from the API 
+  const fetchInitialMovies = useCallback(async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:5000/api/movies/ocean`
+      );
+      const initialMovies = response.data.Search || [];
+      setMovies(initialMovies);
+
+      // Save initial data in localStorage
+      localStorage.setItem("movies", JSON.stringify(initialMovies));
+    } catch (error) {
+      console.error("Error fetching initial movies:", error);
+    }
+  }, []);
+
+  // Function to perform a search based on user input
   const handleSearch = useCallback(async () => {
     if (query.trim() !== "") {
       // only if the request is non-empty
@@ -18,7 +34,7 @@ const HomePage = () => {
         const fetchedMovies = response.data.Search || [];
         setMovies(fetchedMovies);
 
-        // save data in localStorage
+        // save searched movies in localStorage
         localStorage.setItem("movies", JSON.stringify(fetchedMovies));
       } catch (error) {
         console.error("Error fetching movies:", error);
@@ -26,21 +42,33 @@ const HomePage = () => {
     }
   }, [query]);
 
-  useEffect(() => {
-    handleSearch();
-  }, [handleSearch]);
-
-  // loading saved movies from localStorage
+  // Load initial data
   useEffect(() => {
     const savedMovies = localStorage.getItem("movies");
     if (savedMovies) {
       const parsedMovies = JSON.parse(savedMovies);
-      setMovies(parsedMovies); // Устанавливаем фильмы из localStorage, если они там есть
+      setMovies(parsedMovies);
+    } else {
+      fetchInitialMovies(); // Fetch initial movies from API if localStorage is empty
     }
-  }, []);
+  }, [fetchInitialMovies]);
 
+  // Search for movies
+  useEffect(() => {
+    if (query) {
+      handleSearch();
+    }
+  }, [query, handleSearch]);
+
+  // Button click or Enter key
   const handleButtonClick = () => {
     setQuery(searchTerm);
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      setQuery(searchTerm);
+    }
   };
 
   return (
@@ -51,6 +79,7 @@ const HomePage = () => {
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
         placeholder="Search for a movie..."
+        onKeyDown={handleKeyDown}
       />
       <button onClick={handleButtonClick}>Search</button>
       <div className="movie-list">
@@ -62,6 +91,7 @@ const HomePage = () => {
           </div>
         ))}
       </div>
+      
     </div>
   );
 };
