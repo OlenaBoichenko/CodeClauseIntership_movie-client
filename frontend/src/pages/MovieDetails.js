@@ -8,7 +8,7 @@ const MovieDetails = () => {
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
-      const response = await axios.get(`http://localhost:5000/api/movie/${id}`);
+      const response = await axios.get(`https://search-movies-backend.onrender.com/api/movie/${id}`);
       setMovie(response.data);
     };
 

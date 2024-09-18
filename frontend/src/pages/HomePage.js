@@ -11,7 +11,7 @@ const HomePage = () => {
   const fetchInitialMovies = useCallback(async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/movies/ocean`
+        `https://search-movies-backend.onrender.com/api/movies/ocean`
       );
       const initialMovies = response.data.Search || [];
       setMovies(initialMovies);
@@ -29,7 +29,7 @@ const HomePage = () => {
       // only if the request is non-empty
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/movies?query=${query}`
+          `https://search-movies-backend.onrender.com/api/movies?query=${query}`
         );
         const fetchedMovies = response.data.Search || [];
         setMovies(fetchedMovies);
