@@ -105,7 +105,7 @@ const HomePage = () => {
               style={{ textDecoration: "none" }}
             >
               <div className="movie-item" style={{ cursor: "pointer" }}>
-                <h3>{movie.Title}</h3>
+                <h3>{movie.Title.substring(0, 30)}</h3>
                 <img src={movie.Poster} alt="poster" />
                 <button>More Details</button>
               </div>
